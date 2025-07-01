@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://djrl3xkmf12gg"]
+[gd_scene load_steps=8 format=3 uid="uid://djrl3xkmf12gg"]
 
-[ext_resource type="Script" uid="uid://1dn1ytc5451c" path="res://scripts/spawn.gd" id="1_auhge"]
+[ext_resource type="Script" uid="uid://1dn1ytc5451c" path="res://scripts/spawner.gd" id="1_auhge"]
 [ext_resource type="PackedScene" uid="uid://dbodf1623055y" path="res://scenes/enemy.tscn" id="2_48w1d"]
+[ext_resource type="Script" uid="uid://dxvoe0pudlniw" path="res://scripts/EnemyType.gd" id="3_30a77"]
+[ext_resource type="Resource" uid="uid://xodbqduba3di" path="res://resources/enemy_cube.tres" id="4_p5s3f"]
+[ext_resource type="Resource" uid="uid://cv3jsl5k6vidw" path="res://resources/enemy_eye.tres" id="5_e3f8v"]
+[ext_resource type="Resource" uid="uid://bscpgshi3empq" path="res://resources/enemy_eyeLegs.tres" id="6_3rx28"]
+[ext_resource type="Resource" uid="uid://duyj6ktlhpwsk" path="res://resources/enemy_tripleEyes.tres" id="7_m1kbb"]
 
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_auhge")
 enemy = ExtResource("2_48w1d")
+enemy_types = Array[ExtResource("3_30a77")]([ExtResource("4_p5s3f"), ExtResource("5_e3f8v"), ExtResource("6_3rx28"), ExtResource("7_m1kbb")])
 
 [node name="UI" type="CanvasLayer" parent="."]
 

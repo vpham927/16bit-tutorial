@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://duyj6ktlhpwsk"]
+
+[ext_resource type="Script" uid="uid://dxvoe0pudlniw" path="res://scripts/EnemyType.gd" id="1_7rc40"]
+[ext_resource type="Texture2D" uid="uid://bf3gpdp25henj" path="res://assets/RPG Battlers 3/4 v1.png" id="2_p4mst"]
+
+[resource]
+script = ExtResource("1_7rc40")
+title = "TripleEye"
+texture = ExtResource("2_p4mst")
+health = 0.0
+damage = 8.0
+metadata/_custom_type_script = "uid://dxvoe0pudlniw"
