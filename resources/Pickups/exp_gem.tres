@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Gem" load_steps=3 format=3 uid="uid://m46pdsbit3ui"]
+
+[ext_resource type="Texture2D" uid="uid://biy42qrs6py73" path="res://assets/RPG Battlers 3/14 v2.png" id="1_yr72w"]
+[ext_resource type="Script" uid="uid://cdyhvpc68e8bp" path="res://Gem.gd" id="2_kok2n"]
+
+[resource]
+script = ExtResource("2_kok2n")
+XP = 1.0
+name = "Exp Gem"
+icon = ExtResource("1_yr72w")
+descriptipn = ""
+metadata/_custom_type_script = "uid://cdyhvpc68e8bp"

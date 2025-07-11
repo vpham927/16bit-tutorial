@@ -8,8 +8,8 @@
 script = ExtResource("2_h2h8q")
 title = "Magic Wand"
 texture = ExtResource("3_x3k7b")
-damage = 1.0
-cooldown = 0.1
+damage = 2.0
+cooldown = 0.75
 speed = 400.0
 projectile_node = ExtResource("1_eofbv")
 metadata/_custom_type_script = "uid://xnql2m686ehc"

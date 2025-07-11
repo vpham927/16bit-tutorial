@@ -2,10 +2,19 @@ extends CharacterBody2D
 
 @export var player_reference : CharacterBody2D
 
+var damage_popup_node = preload("res://scenes/damage.tscn")
+
 var speed: float = 75
 var direction : Vector2
 var damage : float
 var separation : float
+
+var health : float:
+	set(value):
+		health = value
+		if health <= 0:
+			queue_free()
+			
 
 var knockback : Vector2
 var elite : bool = false:
@@ -21,20 +30,22 @@ var type : Enemy: #We've created a resource already
 		type = value
 		%Sprite2D.texture = value.texture
 		damage = value.damage
+		health = value.health
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta):
 	check_separation(delta)
 	knockback_update(delta)
 
 #Move the enemy towards the player
 func check_separation(delta):
 	var separation = (player_reference.position - position).length()
-	if separation >= 500 and not elite:
-		queue_free()
 		
+	if separation >= 500 and not elite:
+		queue_free()	
+
 	if separation < player_reference.nearest_enemy_distance:
 		player_reference.nearest_enemy = self
-		
+		player_reference.nearest_enemy_distance = separation
 
 func knockback_update(delta):
 	velocity = (player_reference.position - position).normalized() * speed
@@ -45,3 +56,20 @@ func knockback_update(delta):
 	if collider: 
 		collider.get_collider().knockback = (collider.get_collider().global_position - global_position).normalized() * 50
 		
+func damage_popup(amount):
+	var popup = damage_popup_node.instantiate()
+	popup.text = str(amount)
+	popup.position = position + Vector2(-50,-25)
+	get_tree().current_scene.add_child(popup)
+
+func take_damage(amount):
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property($Sprite2D, "modulate", Color(3, 0.25, 0.25), 0.2)
+	tween.chain().tween_property($Sprite2D, "modulate", Color(1, 1, 1), 0.2)
+	
+	#Code to remove the Debugger errors
+	tween.bind_node(self)
+	damage_popup(amount)
+	health -= amount
+	

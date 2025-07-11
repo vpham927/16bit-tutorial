@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dl37f3tko800v"]
+[gd_scene load_steps=8 format=3 uid="uid://dl37f3tko800v"]
 
 [ext_resource type="Script" uid="uid://bkxtr55rsm8fo" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://cdh1sg08d5uhl" path="res://scenes/slot.tscn" id="2_qhqgy"]
@@ -11,14 +11,18 @@ size = Vector2(20, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
+radius = 50.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_3vyb7")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Weapons" type="HBoxContainer" parent="UI"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_top = 27.0
+offset_right = 308.0
+offset_bottom = 127.0
 
 [node name="Slot" parent="UI/Weapons" instance=ExtResource("2_qhqgy")]
 layout_mode = 2
@@ -29,6 +33,20 @@ layout_mode = 2
 
 [node name="Slot3" parent="UI/Weapons" instance=ExtResource("2_qhqgy")]
 layout_mode = 2
+
+[node name="XP" type="ProgressBar" parent="UI"]
+unique_name_in_owner = true
+offset_right = 1914.0
+offset_bottom = 27.0
+
+[node name="Level" type="Label" parent="UI/XP"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 579.0
+offset_top = 45.0
+offset_right = 633.0
+offset_bottom = 68.0
+text = "Level 1"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_g2els")
@@ -56,6 +74,15 @@ value = 100.0
 autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="Magnet" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet"]
+shape = SubResource("CircleShape2D_qhqgy")
 
 [connection signal="body_entered" from="SelfDamage" to="." method="_on_self_damage_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Magnet" to="." method="_on_magnet_area_entered"]
