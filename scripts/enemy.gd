@@ -9,10 +9,13 @@ var direction : Vector2
 var damage : float
 var separation : float
 
+var drop = preload("res://scenes/pickups.tscn")
+
 var health : float:
 	set(value):
 		health = value
 		if health <= 0:
+			drop_item()
 			queue_free()
 			
 
@@ -73,3 +76,15 @@ func take_damage(amount):
 	damage_popup(amount)
 	health -= amount
 	
+func drop_item():
+	if type.drops.size() == 0:
+		return
+	
+	var item = type.drops.pick_random()
+	var item_to_drop = drop.instantiate()
+	
+	item_to_drop.type = item
+	item_to_drop.position = position
+	item_to_drop.player_reference = player_reference
+	
+	get_tree().current_scene.call_deferred("add_child", item_to_drop)

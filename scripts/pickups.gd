@@ -11,7 +11,7 @@ var speed : float = 175
 		
 var can_follow : bool = false 
 
-func ready():
+func _ready():
 	$Sprite2D.texture = type.icon
 
 func _physics_process(delta: float) -> void:

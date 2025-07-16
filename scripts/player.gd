@@ -22,7 +22,7 @@ var level : int = 1:
 	set(value):
 		level = value
 		%Level.text = "Level " + str(value)
-		
+		%Options.show_option()
 		#Replace this with a better Level up function and XP curve. 
 		if level >= 3:
 			%XP.max_value = 20

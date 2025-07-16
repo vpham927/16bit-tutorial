@@ -1,13 +1,9 @@
-[gd_scene load_steps=14 format=4 uid="uid://diraf5c3y0tsi"]
+[gd_scene load_steps=9 format=4 uid="uid://diraf5c3y0tsi"]
 
 [ext_resource type="Texture2D" uid="uid://bjvtsi2pvxmg2" path="res://assets/TopDownFantasy-Forest/Tiles/Tileset.png" id="1_7ddre"]
 [ext_resource type="PackedScene" uid="uid://dl37f3tko800v" path="res://scenes/player.tscn" id="1_g7g4h"]
 [ext_resource type="Texture2D" uid="uid://berge062hg72v" path="res://assets/TopDownFantasy-Forest/Decorations/Decorations.png" id="2_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://djrl3xkmf12gg" path="res://scenes/spawner.tscn" id="3_nd71p"]
-[ext_resource type="PackedScene" uid="uid://dhc7ibgboc14j" path="res://scenes/pickups.tscn" id="5_qjeyg"]
-[ext_resource type="Resource" uid="uid://m46pdsbit3ui" path="res://resources/Pickups/exp_gem.tres" id="6_3qnke"]
-[ext_resource type="Texture2D" uid="uid://dc8d0h1i21lrx" path="res://assets/RPG Battlers 3/3 v2.png" id="6_rnaij"]
-[ext_resource type="Script" uid="uid://cdyhvpc68e8bp" path="res://Gem.gd" id="7_h3xc6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3qnke"]
 texture = ExtResource("1_7ddre")
@@ -30,14 +26,6 @@ texture = ExtResource("2_qjeyg")
 [sub_resource type="TileSet" id="TileSet_h3xc6"]
 sources/1 = SubResource("TileSetAtlasSource_rnaij")
 
-[sub_resource type="Resource" id="Resource_s36qc"]
-script = ExtResource("7_h3xc6")
-XP = 1.0
-name = ""
-icon = ExtResource("6_rnaij")
-descriptipn = ""
-metadata/_custom_type_script = "uid://cdyhvpc68e8bp"
-
 [node name="TestScene" type="Node2D" groups=["Enemy"]]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
@@ -56,13 +44,3 @@ position = Vector2(365, 202)
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_nd71p")]
 player = NodePath("../Player")
-
-[node name="Pickups" parent="." node_paths=PackedStringArray("player_reference") instance=ExtResource("5_qjeyg")]
-position = Vector2(370, 80)
-type = SubResource("Resource_s36qc")
-player_reference = NodePath("../Player")
-
-[node name="Pickups2" parent="." node_paths=PackedStringArray("player_reference") instance=ExtResource("5_qjeyg")]
-position = Vector2(309, 161)
-type = ExtResource("6_3qnke")
-player_reference = NodePath("../Player")

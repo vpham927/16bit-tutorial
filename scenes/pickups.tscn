@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhc7ibgboc14j"]
+[gd_scene load_steps=4 format=3 uid="uid://dhc7ibgboc14j"]
 
 [ext_resource type="Script" uid="uid://x3ayk55wbei7" path="res://scripts/pickups.gd" id="1_xnt6b"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xnt6b"]
+size = Vector2(10, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lekrw"]
 
@@ -9,6 +12,7 @@ collision_layer = 4
 script = ExtResource("1_xnt6b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_xnt6b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lekrw")
