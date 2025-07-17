@@ -1,6 +1,7 @@
 extends Weapon
 class_name SingleShot
 
+var source 
 func shoot (source, target, scene_tree):
 	if target == null:
 		return
@@ -11,7 +12,7 @@ func shoot (source, target, scene_tree):
 	projectile.damage = damage
 	projectile.speed = speed
 	projectile.direction = (target.position - source.position).normalized()
-	
+	projectile.source = source 
 	scene_tree.current_scene.add_child(projectile)
 
 func activate(source, target, scene_tree):
